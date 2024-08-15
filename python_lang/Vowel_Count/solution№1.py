@@ -3,7 +3,7 @@ def get_count(sentence):
     counter = 0
     string = len(sentence)
     for i in range(string):
-        if i == "a" or i == "e" or i == "i" or i == "i" or i == "o" or i == "u":
+        if sentence[i] == "a" or sentence[i] == "e" or sentence[i] == "i" or sentence[i] == "i" or sentence[i] == "o" or sentence[i] == "u":
             counter += 1
     return counter
 
