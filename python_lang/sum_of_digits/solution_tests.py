@@ -1,4 +1,3 @@
-import codewars_test as test
 from solution import digital_root
 
 import unittest
@@ -6,4 +5,4 @@ import unittest
 class TestStringMethods(unittest.TestCase):
 
     def test_correct(self):
-        self.assertEqual(digital_root(12445), 7)
+        self.assertEqual(digital_root(435439), 7)

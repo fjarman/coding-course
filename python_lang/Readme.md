@@ -8,6 +8,6 @@ python -m venv .venv
 
 Чтобы установить зависимости, выполни в терминале PyCharm:
 ```
-.\.venv\Scripts\activate
-pip install -r ./requirements.txt
+./.venv/Scripts/activate
+pip3 install -r ./requirements.txt
 ```
