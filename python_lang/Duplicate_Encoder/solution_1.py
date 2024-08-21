@@ -13,8 +13,5 @@ def duplicate_encode(word):
 
 class TestStringMethods(unittest.TestCase):
 
-    def basic_test_cases():
-        test.assert_equals(duplicate_encode("din"),"(((")
-        test.assert_equals(duplicate_encode("recede"),"()()()")
-        test.assert_equals(duplicate_encode("Success"),")())())","should ignore case")
-        test.assert_equals(duplicate_encode("(( @"),"))((")
+    def test_correct(self):
+        self.assertEqual(duplicate_encode("recede"),"()()())
