@@ -1,17 +1,23 @@
 import unittest
 
 def duplicate_encode(word):
-    x = '(' * len(word)
+    word = word.lower()
+    slovar = {}
+    zamena = ""
     for i in range(len(word)):
-          if ((word.count(word[i]) == 2) or (word.count(word[i]) > 2)):
-             zamena = word.replace(word, x)
-             zamena_2 = word.replace(word[i], ')')
-             return zamena_2
-          else:
-             zamena = word.replace(word, x)
-             return zamena
-
+        if word[i] not in slovar:
+            slovar[word[i]] = 1
+        else:
+            slovar[word[i]] += 1
+    for i in range(len(word)):
+        if slovar[word[i]] > 1:
+            zamena += ")"
+        else:
+            zamena += "("
+    return zamena
 class TestStringMethods(unittest.TestCase):
 
     def test_correct(self):
-        self.assertEqual(duplicate_encode("recede"),"()()())
+        #self.assertEqual(duplicate_encode("recede"),"()()()")
+        #self.assertEqual(duplicate_encode("(( @"),"))((")
+        self.assertEqual(duplicate_encode("Success"),")())())")
