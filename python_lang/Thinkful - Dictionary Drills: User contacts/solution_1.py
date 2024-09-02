@@ -6,8 +6,7 @@ def user_contacts(data):
         if len(data[i]) == 1:
             json[data[i][0]] = None
         else:
-            for j in range(1):
-                json[data[i][j]] = data[i][j+1]
+            json[data[i][0] = data[i][1]
     return json
 
 class TestStringMethods(unittest.TestCase):
