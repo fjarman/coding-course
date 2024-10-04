@@ -21,6 +21,7 @@ def setup_logging():
 
 @app.route("/deployer/welcome_test_1")
 def welcome():
+    app.logger.info(os.environ.get('WERKZEUG_RUN_MAIN'))
     app.logger.info(request.form)
     return render_template('index.html')
 
