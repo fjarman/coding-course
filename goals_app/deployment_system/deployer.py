@@ -22,7 +22,7 @@ def welcome():
     return render_template('index.html')
 
 
-@app.route("/deployer/deploy")
+@app.post("/deployer/deploy")
 def deploy():
     logging.info(request.json)
 
