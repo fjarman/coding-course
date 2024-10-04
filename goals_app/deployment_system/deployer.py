@@ -33,7 +33,12 @@ def deploy():
     clean_environ.pop('WERKZEUG_RUN_MAIN')
     clean_environ.pop('WERKZEUG_SERVER_FD')
     app.logger.info("Running deployment script")
-    subprocess.Popen(['bash', 'deploy.sh'], env=clean_environ, close_fds=True, preexec_fn=os.setsid)
+    subprocess.Popen(['bash', 'deploy.sh'],
+                     env=clean_environ,
+                     close_fds=True,
+                     preexec_fn=os.setsid,
+                     stdout=subprocess.DEVNULL,
+                     stderr=subprocess.DEVNULL)
     app.logger.info("Shutting down server")
     os.kill(os.getpid(), signal.SIGINT)
     return 'Server shutting down...'
