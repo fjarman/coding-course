@@ -7,6 +7,7 @@ from os import environ
 from flask import Flask, render_template, request
 import subprocess
 
+CLEAN_ENVIRON = {}
 app = Flask(__name__)
 
 
@@ -30,13 +31,12 @@ def welcome():
 @app.post("/deployer/deploy")
 def deploy():
     app.logger.info("Running deployment script")
-    new_environ = os.environ.copy()
-    new_environ.pop('WERKZEUG_RUN_MAIN')
-    subprocess.Popen(['bash', 'deploy.sh'], env=new_environ, preexec_fn=os.setsid)
+    subprocess.Popen(['bash', 'deploy.sh'], env=CLEAN_ENVIRON, preexec_fn=os.setsid)
     app.logger.info("Shutting down server")
     os.kill(os.getpid(), signal.SIGINT)
     return 'Server shutting down...'
 
 if __name__ == '__main__':
+    CLEAN_ENVIRON = os.environ.copy()
     app.run(debug=True)
     setup_logging()
