@@ -19,7 +19,7 @@ def setup_logging():
     app.logger.addHandler(handler)
 
 
-@app.route("/deployer/welcome_test")
+@app.route("/deployer/welcome_test_1")
 def welcome():
     app.logger.info(request.form)
     return render_template('index.html')
