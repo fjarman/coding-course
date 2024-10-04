@@ -24,7 +24,7 @@ def welcome():
 
 @app.route("/deployer/deploy")
 def deploy():
-    logging.info(request.form)
+    logging.info(request.json)
 
 if __name__ == '__main__':
     app.run(debug=True)
