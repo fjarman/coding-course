@@ -1,5 +1,5 @@
-set -e
 #!/bin/bash
+set -e
 
 sleep 2
 git pull
