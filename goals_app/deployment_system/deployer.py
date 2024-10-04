@@ -30,6 +30,8 @@ def welcome():
 
 @app.post("/deployer/deploy")
 def deploy():
+    app.logger.info(os.environ['WERKZEUG_RUN_MAIN'])
+    app.logger.info(CLEAN_ENVIRON)
     app.logger.info("Running deployment script")
     subprocess.Popen(['bash', 'deploy.sh'], env=CLEAN_ENVIRON, close_fds=True, preexec_fn=os.setsid)
     app.logger.info("Shutting down server")
