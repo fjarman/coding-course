@@ -25,6 +25,7 @@ def welcome():
 @app.post("/deployer/deploy")
 def deploy():
     logging.info(request.json)
+    return {}
 
 if __name__ == '__main__':
     app.run(debug=True)
