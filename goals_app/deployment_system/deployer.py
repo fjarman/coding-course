@@ -1,7 +1,10 @@
 import logging
+import os
+import signal
 from logging.handlers import RotatingFileHandler
 
 from flask import Flask, render_template, request
+import subprocess
 
 app = Flask(__name__)
 
@@ -18,14 +21,16 @@ def setup_logging():
 
 @app.route("/deployer/welcome")
 def welcome():
-    logging.info(request.form)
+    app.logger.info(request.form)
     return render_template('index.html')
 
 
 @app.post("/deployer/deploy")
 def deploy():
-    logging.info(request.json)
-    return {}
+    app.logger.info(request.json)
+    subprocess.Popen(['bash', 'deploy.sh'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    os.kill(os.getpid(), signal.SIGINT)
+    return 'Server shutting down...'
 
 if __name__ == '__main__':
     app.run(debug=True)
