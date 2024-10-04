@@ -20,7 +20,7 @@ def setup_logging():
     app.logger.addHandler(handler)
 
 
-@app.route("/deployer/welcome_test_14")
+@app.route("/deployer/welcome_test_15")
 def welcome():
     app.logger.info(os.environ.get('WERKZEUG_RUN_MAIN'))
     app.logger.info(request.form)
