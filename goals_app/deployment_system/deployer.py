@@ -27,7 +27,6 @@ def welcome():
 
 @app.post("/deployer/deploy")
 def deploy():
-    app.logger.info(request.json)
     subprocess.Popen(['bash', 'deploy.sh'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     os.kill(os.getpid(), signal.SIGINT)
     return 'Server shutting down...'
