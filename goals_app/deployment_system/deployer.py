@@ -40,5 +40,6 @@ def deploy():
 
 if __name__ == '__main__':
     CLEAN_ENVIRON = os.environ.copy()
+    print(CLEAN_ENVIRON)
     app.run(debug=True)
     setup_logging()
