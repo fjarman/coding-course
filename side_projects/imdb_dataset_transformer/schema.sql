@@ -36,20 +36,14 @@ CREATE TABLE people_professions
 CREATE INDEX people_professions_people_idx ON people_professions (people_id);
 CREATE INDEX people_professions_professions_idx ON people_professions (professions_id);
 
-CREATE TABLE title_types
-(
-    id   INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    type TEXT NOT NULL
-);
-
 CREATE TABLE titles
 (
     id               TEXT NOT NULL,
-    title_type       INTEGER  NOT NULL,
+    title_type       TEXT  NOT NULL,
     primary_title    TEXT NOT NULL,
     original_title   TEXT,
     is_adult         BOOLEAN,
-    start_year       INTEGER  NOT NULL,
+    start_year       INTEGER,
     end_year         INTEGER,
     run_time_minutes INTEGER,
     FOREIGN KEY (title_type) REFERENCES title_types (id)
@@ -120,7 +114,7 @@ CREATE TABLE title_participants(
     title_id TEXT NOT NULL,
     ordering INTEGER NOT NULL,
     people_id TEXT NOT NULL,
-    profession_id INTEGER NOT NULL,
+    profession_id INTEGER,
     characters TEXT,
     FOREIGN KEY(title_id) REFERENCES titles(id),
     FOREIGN KEY(people_id) REFERENCES people(id),
