@@ -5,7 +5,7 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-# Setup logging
+
 def setup_logging():
     handler = RotatingFileHandler('app.log', maxBytes=10000000, backupCount=3)
     handler.setLevel(logging.INFO)
