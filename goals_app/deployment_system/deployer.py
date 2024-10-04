@@ -7,7 +7,7 @@ from os import environ
 from flask import Flask, render_template, request
 import subprocess
 
-CLEAN_ENVIRON = {}
+CLEAN_ENVIRON = os.environ.copy()
 app = Flask(__name__)
 
 
@@ -39,7 +39,6 @@ def deploy():
     return 'Server shutting down...'
 
 if __name__ == '__main__':
-    CLEAN_ENVIRON = os.environ.copy()
     print(CLEAN_ENVIRON)
     app.run(debug=True)
     setup_logging()
