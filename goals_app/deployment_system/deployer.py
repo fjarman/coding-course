@@ -37,7 +37,6 @@ def welcome():
     deployment_date = '0000-00-00'
     with open('last_deployment.txt', 'r') as f:
         deployment_date = f.readlines()[0]
-
     git_info = get_current_commit_info()
     data = {
         'deploy_date': deployment_date,
